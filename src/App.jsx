@@ -36,12 +36,12 @@ const App = () => {
   return (
     <div>
       <div className="navbar">
-        <img src="ruta-a-icono-logo.png" alt="Logo" />
+        <img src="./src/assets/creditcard.png" alt="Logo" />
         <div className="search-bar">
           <input type="text" value={searchValue} onChange={handleSearchTermChange} placeholder="Buscar..." />
         </div>
         <div className="login-icon">
-          <img src="ruta-a-icono-login.png" alt="Login" />
+          <img src="./src/assets/login.png" alt="Login" />
         </div>
       </div>
 
@@ -54,7 +54,7 @@ const App = () => {
           <button onClick={() => handleCardTypeFilter('Visa')}>Visa</button>
           <button onClick={() => handleCardTypeFilter('MasterCard')}>Mastercard</button>
           <button onClick={() => handleCardTypeFilter('American Express')}>American Express</button>
-          <button onClick={() => handleCardTypeFilter('Discover Card')}>Discover Card</button>
+          <button onClick={() => handleCardTypeFilter('Discover Card')}>American Express</button>
           <button onClick={() => setCardTypeFilter(null)}>Clear Filter</button>
         </div>
         <div className="content">

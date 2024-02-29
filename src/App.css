@@ -96,7 +96,7 @@ body {
   background-color: #fff;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .main-container {
     flex-direction: column;
   }

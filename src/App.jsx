@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import CreditCard from './components/CreditCard';
 import useCreditCards from './components/useCreditCards';
 
+
 const App = () => {
   const [quantity, setQuantity] = useState(1);
   const [cardTypeFilter, setCardTypeFilter] = useState(null);
@@ -34,25 +35,33 @@ const App = () => {
 
   return (
     <div>
-      <label>
-        Quantity:
-        <input type="number" value={quantity} onChange={(event) => setQuantity(event.target.value)} />
-      </label>
-      <label>
-        Search by Card Number:
-        <input type="text" value={searchValue} onChange={handleSearchTermChange} />
-      </label>
-      <div>
-        <button onClick={() => handleCardTypeFilter('Visa')}>Visa</button>
-        <button onClick={() => handleCardTypeFilter('MasterCard')}>Mastercard</button>
-        <button onClick={() => handleCardTypeFilter('AmericanExpress')}>American Express</button>
-        <button onClick={() => setCardTypeFilter(null)}>Clear Filter</button>
+      <div className="navbar">
+        <img src="ruta-a-icono-logo.png" alt="Logo" />
+        <div className="search-bar">
+          <input type="text" value={searchValue} onChange={handleSearchTermChange} placeholder="Buscar..." />
+        </div>
+        <div className="login-icon">
+          <img src="ruta-a-icono-login.png" alt="Login" />
+        </div>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '10px' }}>
-        {filteredCreditCards.map((data, index) => (
-          <CreditCard key={index} data={data} />
-        ))}
 
+      <div className="main-container">
+        <div className="sidebar">
+          <label>
+            Cantidad:
+            <input type="number" value={quantity} onChange={(event) => setQuantity(event.target.value)} />
+          </label>
+          <button onClick={() => handleCardTypeFilter('Visa')}>Visa</button>
+          <button onClick={() => handleCardTypeFilter('MasterCard')}>Mastercard</button>
+          <button onClick={() => handleCardTypeFilter('American Express')}>American Express</button>
+          <button onClick={() => handleCardTypeFilter('Discover Card')}>Discover Card</button>
+          <button onClick={() => setCardTypeFilter(null)}>Clear Filter</button>
+        </div>
+        <div className="content">
+          {filteredCreditCards.map((data, index) => (
+            <CreditCard key={index} data={data} />
+          ))}
+        </div>
       </div>
     </div>
   );

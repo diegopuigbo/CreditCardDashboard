@@ -1,4 +1,3 @@
-// App.jsx
 import { useState, useEffect } from 'react';
 import CreditCard from './components/CreditCard';
 import useCreditCards from './components/useCreditCards';
@@ -9,6 +8,7 @@ const App = () => {
   const [searchValue, setSearchValue] = useState('');
   const { creditCards, fetchCreditCards } = useCreditCards();
   const [cardCount, setCardCount] = useState({});
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     fetchCreditCards(quantity);
@@ -28,7 +28,6 @@ const App = () => {
 
     setCardCount(newCardCount);
   }, [creditCards]);
-
 
   const handleCardTypeFilter = (type) => {
     setCardTypeFilter(type);
@@ -50,8 +49,12 @@ const App = () => {
     return true;
   });
 
+  const handleShowFilters = () => {
+    setShowFilters(!showFilters);
+  };
+
   return (
-    <div>
+    <>
       <div className="navbar">
         <img src="./src/assets/creditcard.png" alt="Logo" />
         <div className="search-bar">
@@ -68,7 +71,8 @@ const App = () => {
             Cantidad:
             <input type="number" value={quantity} onChange={(event) => setQuantity(event.target.value)} />
           </label>
-          {Object.keys(cardCount).map((type) => (
+          <button onClick={handleShowFilters}>Filtros</button>
+          {showFilters && Object.keys(cardCount).map((type) => (
             <button key={type} onClick={() => handleCardTypeFilter(type)}>
               {type} ({cardCount[type]})
             </button>
@@ -81,7 +85,7 @@ const App = () => {
           ))}
         </div>
       </div>
-    </div>
+    </ >
   );
 };
 

@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault();
 
     if (username === "Usuario" && password === "Contraseña") {
-      navigate("/App");
+      navigate("/app");
     } else {
       alert("Credenciales incorrectas");
     }

@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
+
 import CreditCard from "./components/CreditCard";
 import useCreditCards from "./components/useCreditCards";
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
+  const navigate = useNavigate();
+
   const [quantity, setQuantity] = useState(0);
   const [cardTypeFilter, setCardTypeFilter] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -37,6 +41,17 @@ const App = () => {
     setSearchValue(event.target.value);
   };
 
+  const handleShowFilters = () => {
+    setShowFilters(!showFilters);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/login", {
+      replace: true,
+    });
+  };
+
   const filteredCreditCards = creditCards.filter((card) => {
     if (cardTypeFilter && card.type !== cardTypeFilter) {
       return false;
@@ -48,10 +63,6 @@ const App = () => {
 
     return true;
   });
-
-  const handleShowFilters = () => {
-    setShowFilters(!showFilters);
-  };
 
   return (
     <>
@@ -87,7 +98,10 @@ const App = () => {
                 {type} ({cardCount[type]})
               </button>
             ))}
-          <button onClick={() => setCardTypeFilter(null)}>Clear Filter</button>
+          <button onClick={() => setCardTypeFilter(null)}>
+            Limpiar Filtro
+          </button>
+          <button onClick={handleLogout}>Salir</button>
         </div>
         <div className="content">
           {cardTypeFilter &&

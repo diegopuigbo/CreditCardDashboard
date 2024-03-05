@@ -45,7 +45,6 @@ body {
 
 .main-container {
   display: flex;
-  height: 100%;
 }
 
 
@@ -90,6 +89,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1em;
+  max-height: 20em;
 }
 
 .credit-card {
@@ -102,7 +102,7 @@ body {
 @media screen and (max-width: 1000px) {
   .main-container {
     flex-direction: column;
-    height: 100%;
+    
   }
 
   .sidebar {

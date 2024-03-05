@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import CreditCard from './components/CreditCard';
-import useCreditCards from './components/useCreditCards';
+import { useState, useEffect } from "react";
+import CreditCard from "./components/CreditCard";
+import useCreditCards from "./components/useCreditCards";
 
 const App = () => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [cardTypeFilter, setCardTypeFilter] = useState(null);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const { creditCards, fetchCreditCards } = useCreditCards();
   const [cardCount, setCardCount] = useState({});
   const [showFilters, setShowFilters] = useState(false);
@@ -58,7 +58,12 @@ const App = () => {
       <div className="navbar">
         <img src="./src/assets/creditcard.png" alt="Logo" />
         <div className="search-bar">
-          <input type="text" value={searchValue} onChange={handleSearchTermChange} placeholder="Buscar..." />
+          <input
+            type="text"
+            value={searchValue}
+            onChange={handleSearchTermChange}
+            placeholder="Buscar..."
+          />
         </div>
         <div className="login-icon">
           <img src="./src/assets/login.png" alt="Login" />
@@ -69,23 +74,29 @@ const App = () => {
         <div className="sidebar">
           <label>
             Cantidad:
-            <input type="number" value={quantity} onChange={(event) => setQuantity(event.target.value)} />
+            <input
+              type="number"
+              value={quantity}
+              onChange={(event) => setQuantity(event.target.value)}
+            />
           </label>
           <button onClick={handleShowFilters}>Filtros</button>
-          {showFilters && Object.keys(cardCount).map((type) => (
-            <button key={type} onClick={() => handleCardTypeFilter(type)}>
-              {type} ({cardCount[type]})
-            </button>
-          ))}
+          {showFilters &&
+            Object.keys(cardCount).map((type) => (
+              <button key={type} onClick={() => handleCardTypeFilter(type)}>
+                {type} ({cardCount[type]})
+              </button>
+            ))}
           <button onClick={() => setCardTypeFilter(null)}>Clear Filter</button>
         </div>
         <div className="content">
-          {cardTypeFilter && filteredCreditCards.map((data, index) => (
-            <CreditCard key={index} data={data} />
-          ))}
+          {cardTypeFilter &&
+            filteredCreditCards.map((data, index) => (
+              <CreditCard key={index} data={data} />
+            ))}
         </div>
       </div>
-    </ >
+    </>
   );
 };
 

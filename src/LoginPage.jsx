@@ -10,7 +10,8 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (username === "Usuario" && password === "Contraseña") {
+    if (username === "Diego" && password === "1") {
+      localStorage.setItem("username", username);
       navigate("/app");
     } else {
       alert("Credenciales incorrectas");

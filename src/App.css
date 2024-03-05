@@ -15,6 +15,11 @@ body {
   width: 100%;
 }
 
+.username {
+  font-size: 1em;
+  margin-right: 1em;
+  margin-top: .5em;
+}
 
 .navbar img {
   width: 2em;
@@ -40,6 +45,7 @@ body {
 .login-icon {
   margin-left: auto;
   margin-right: 1em;
+  display: flex;
 }
 
 

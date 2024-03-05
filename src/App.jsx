@@ -37,6 +37,8 @@ const App = () => {
     setCardTypeFilter(type);
   };
 
+  const username = localStorage.getItem("username");
+
   const handleSearchTermChange = (event) => {
     setSearchValue(event.target.value);
   };
@@ -77,7 +79,12 @@ const App = () => {
           />
         </div>
         <div className="login-icon">
-          <img src="./src/assets/login.png" alt="Login" />
+          <span className="username">{username}</span>
+          <img
+            src="./src/assets/login.png"
+            alt="Login"
+            onClick={handleLogout}
+          />
         </div>
       </div>
 
